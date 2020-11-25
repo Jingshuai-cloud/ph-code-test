@@ -1,26 +1,53 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { GlobalStyle, Wrapper } from "./App.styles";
+import LoginCard from "./components/LoginCard/LoginCard";
 
-function App() {
+const App = () => {
+  const [login, setLogin] = useState(false);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const goBack = (e: React.MouseEvent<HTMLButtonElement>) => {
+    setLogin(false);
+    console.log(username);
+    console.log(password);
+  };
+  const submit = (e: React.MouseEvent<HTMLButtonElement>) => {
+    console.log(username);
+  };
+  const startLogin = () => {
+    setLogin(true);
+  };
+
+  const inputUserName = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUsername(e.target.value);
+  };
+
+  const inputPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(e.target.value);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Wrapper>
+        <GlobalStyle />
+        <h1>Predictive Hire</h1>
+        {!login && (
+          <button className="login" onClick={startLogin}>
+            Login
+          </button>
+        )}
+
+        {login && (
+          <LoginCard
+            goBack={goBack}
+            submitLogin={submit}
+            inputUserName={inputUserName}
+            inputPassword={inputPassword}
+          />
+        )}
+      </Wrapper>
+    </>
   );
-}
+};
 
 export default App;
