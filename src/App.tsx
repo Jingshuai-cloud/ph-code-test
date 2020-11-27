@@ -3,6 +3,52 @@ import { GlobalStyle, Wrapper } from "./App.styles";
 import LoginCard from "./components/LoginCard/LoginCard";
 import QuestionCard from "./components/QuestionCard/QuestionCard";
 import { fetchLogin, fetchQuestion, Question } from "./API";
+import Sidebar from "./components/Sidebar/Sidebar";
+
+const menus = [
+  { coffee: "AFFOGATO", path: "/layer1", subMenu: [] },
+  {
+    coffee: "ESPRESSO",
+    path: "/",
+    subMenu: [
+      { coffee: "ESPRESSO", path: "/", subMenu: [] },
+      { coffee: "DOUBLE ESPRESSO", path: "/", subMenu: [] },
+      {
+        coffee: "MORE",
+        path: "/",
+        subMenu: [
+          { coffee: "ESPRESSO CON PANNA", path: "/", subMenu: [] },
+          { coffee: "ESPRESSO MACCHIATO", path: "/", subMenu: [] },
+          {
+            coffee: "MORE",
+            path: "/",
+            subMenu: [
+              { coffee: "ICED LATTE", path: "/", subMenu: [] },
+              { coffee: "ICED MOCHA", path: "/", subMenu: [] },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+
+  { coffee: "AMERICANO ", path: "/layer1", subMenu: [] },
+
+  { coffee: "CAPPUCCINO ", path: "/layer1", subMenu: [] },
+
+  {
+    coffee: "CAFFÈ ",
+    path: "/",
+    subMenu: [
+      { coffee: "CAFFÈ LATTE ", path: "/layer2", subMenu: [] },
+      { coffee: "CAFFÈ MOCHA ", path: "/layer2", subMenu: [] },
+
+      { coffee: "CAFÈ AU LAIT", path: "/layer2", subMenu: [] },
+    ],
+  },
+  { coffee: "FLAT WHITE", path: "/", subMenu: [] },
+  { coffee: "Login", path: "/login", subMenu: [] },
+];
 
 export type AnswerObject = {
   question: string;
@@ -87,43 +133,48 @@ const App = () => {
     <>
       <Wrapper>
         <GlobalStyle />
-        <h1>Predictive Hire</h1>
-        {!login && !submit && (
-          <button className="login" onClick={startLogin}>
-            Login
-          </button>
-        )}
+        <Sidebar menus={menus} />
+        <div id="right">
+          <h1>Predictive Hire</h1>
+          {!login && !submit && (
+            <button className="home-button" onClick={startLogin}>
+              Login
+            </button>
+          )}
 
-        {login && (
-          <LoginCard
-            goBack={goBack}
-            submitLogin={submitLogin}
-            inputUserName={inputUserName}
-            inputPassword={inputPassword}
-          />
-        )}
-        {error && <p>login failed</p>}
-        {submit && <p>login successful</p>}
-        {/* {submit && <QuestionCard />} */}
-        {submit && (
-          <QuestionCard
-            question={questions[number].question}
-            questionNr={number + 1}
-            answers={questions[number].answers}
-            userAnswer={userAnswers ? userAnswers[number] : undefined}
-            callback={checkAnswer}
-          />
-        )}
-        {userAnswers.length === number + 1 && number !== 2 ? (
-          <button className="next" onClick={nextQuestion}>
-            Next Question
-          </button>
-        ) : null}
-        {userAnswers.length === TOTAL_QUESTIONS ? (
-          <button className="next" onClick={goBack}>
-            Back to Home
-          </button>
-        ) : null}
+          {login && (
+            <LoginCard
+              goBack={goBack}
+              submitLogin={submitLogin}
+              inputUserName={inputUserName}
+              inputPassword={inputPassword}
+            />
+          )}
+          {error && <p>login failed</p>}
+
+          {/* {submit && <QuestionCard />} */}
+          {submit && (
+            <QuestionCard
+              question={questions[number].question}
+              questionNr={number + 1}
+              answers={questions[number].answers}
+              userAnswer={userAnswers ? userAnswers[number] : undefined}
+              callback={checkAnswer}
+            />
+          )}
+          {userAnswers.length === number + 1 && number !== 2 ? (
+            <button className="home-button" onClick={nextQuestion}>
+              Next Question
+            </button>
+          ) : null}
+          {userAnswers.length === TOTAL_QUESTIONS ? (
+            <button className="home-button" onClick={goBack}>
+              Back to Home
+            </button>
+          ) : null}
+
+          {submit && <p>login successful</p>}
+        </div>
       </Wrapper>
     </>
   );

@@ -8,12 +8,10 @@ html {
 }
 
 body {
-    background-image:url(${BGImage});
+  background-image: url(${BGImage});
     background-size: cover;
     margin: 0;
     padding: 0 20px;
-    display: flex;
-    justify-content: center;
 }
 
 * {
@@ -24,11 +22,12 @@ body {
 
 export const Wrapper = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
 
   > p {
     color: #fff;
+    font-size: large;
   }
 
   h1 {
@@ -42,7 +41,7 @@ export const Wrapper = styled.div`
     margin: 50px;
   }
 
-  .login {
+  .home-button {
     cursor: pointer;
     background: linear-gradient(180deg, #fff, #d2bbb0);
     border: 2px solid #5b4337;
@@ -52,5 +51,20 @@ export const Wrapper = styled.div`
     margin: 20px 0;
     padding: 0 40px;
     max-width: 200px;
+  }
+
+  #right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    align-items: center;
+    margin-left: 200px;
+  }
+
+  .right-display {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 `;

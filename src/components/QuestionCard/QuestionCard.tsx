@@ -19,19 +19,25 @@ const QuestionCard: React.FC<Props> = ({
 }) => {
   return (
     <Wrapper>
-      <p className="number">Question: {questionNr}/3</p>
+      <p>Question: {questionNr}/3</p>
       <p>{question}</p>
       <div>
         {answers.map((answer) => (
-          <div key={answer}>
-            <button
-              disabled={userAnswer ? true : false}
-              value={answer}
-              onClick={callback}
-            >
-              {answer}
-            </button>
-          </div>
+          <ButtonWrapper
+            key={answer}
+            correct={userAnswer ? userAnswer.correctAnswer === answer : false}
+            userClicked={userAnswer ? userAnswer.answer === answer : false}
+          >
+            <div>
+              <button
+                disabled={userAnswer ? true : false}
+                value={answer}
+                onClick={callback}
+              >
+                {answer}
+              </button>
+            </div>
+          </ButtonWrapper>
         ))}
       </div>
     </Wrapper>
