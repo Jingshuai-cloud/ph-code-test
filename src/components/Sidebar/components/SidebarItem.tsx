@@ -1,5 +1,5 @@
 import React from "react";
-import { ItemList, Item, ItemAnchor, ItemLabel } from "./Sidebar.styles";
+import { ItemList, Item, ItemAnchor, ItemLabel } from "./SidebarItem.styles";
 
 export type MenuObject = {
   coffee: string;

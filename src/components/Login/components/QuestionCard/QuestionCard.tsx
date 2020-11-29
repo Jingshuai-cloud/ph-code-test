@@ -1,6 +1,7 @@
 import React from "react";
-import { Wrapper, ButtonWrapper } from "./QuestionCard.style";
-import { AnswerObject } from "../../App";
+import { ButtonWrapper } from "./QuestionCard.style";
+import { CardWrapper } from "../../../../GlobalStyle/GlobalStyle.style";
+import { AnswerObject } from "../../Login";
 
 type Props = {
   question: string;
@@ -18,7 +19,7 @@ const QuestionCard: React.FC<Props> = ({
   callback,
 }) => {
   return (
-    <Wrapper>
+    <CardWrapper>
       <p>Question: {questionNr}/3</p>
       <p>{question}</p>
       <div>
@@ -40,7 +41,7 @@ const QuestionCard: React.FC<Props> = ({
           </ButtonWrapper>
         ))}
       </div>
-    </Wrapper>
+    </CardWrapper>
   );
 };
 

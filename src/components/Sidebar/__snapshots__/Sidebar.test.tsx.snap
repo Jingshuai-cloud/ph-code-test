@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Sidebar Sidebar changes the class when hovered 1`] = `
+<nav
+  className="sc-bdfBwQ jPFBzQ"
+>
+  <ul
+    onMouseLeave={[Function]}
+  >
+    <li
+      className="sc-dlfnbm gYqwid"
+    >
+      <a
+        className="sc-eCssSg iZhdA-D"
+        href="/layer1"
+      >
+        AFFOGATO
+      </a>
+    </li>
+    <li
+      className="sc-dlfnbm gYqwid"
+    >
+      <span
+        className="sc-hKgILt eCFKRY"
+        onMouseEnter={[Function]}
+      >
+        ESPRESSO
+      </span>
+    </li>
+  </ul>
+</nav>
+`;
+
+exports[`Sidebar call the handleMenuSelection callback handler 1`] = `
+<nav
+  className="sc-bdfBwQ jPFBzQ"
+>
+  <ul
+    onMouseLeave={[Function]}
+  >
+    <li
+      className="sc-dlfnbm gYqwid"
+    >
+      <a
+        className="sc-eCssSg iZhdA-D"
+        href="/layer1"
+      >
+        AFFOGATO
+      </a>
+    </li>
+    <li
+      className="sc-dlfnbm gYqwid"
+    >
+      <span
+        className="sc-hKgILt eCFKRY"
+        onMouseEnter={[Function]}
+      >
+        ESPRESSO
+      </span>
+    </li>
+  </ul>
+</nav>
+`;

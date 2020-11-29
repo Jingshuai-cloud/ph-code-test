@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Wrapper } from "./Sidebar.styles";
-import SidebarItem from "./SidebarItem";
-import { MenuObject } from "./SidebarItem";
+import { NavWrapper } from "./Sidebar.styles";
+import SidebarItem from "./components/SidebarItem";
+import { MenuObject } from "./components/SidebarItem";
 
 type Props = {
   menus: Array<MenuObject>;
@@ -13,18 +13,19 @@ const Sidebar: React.FC<Props> = ({ menus }) => {
   const handleMenuSelection = (subMenu: string, level: number) => {
     setSelectedList((selectedList: string[]) => {
       const newSelectedList: string[] = [...selectedList];
-      // trim any menus after the depth
+
       newSelectedList.length = level;
       if (subMenu !== "") {
         newSelectedList[level] = subMenu;
       }
       return newSelectedList;
     });
+
     console.log(selectedList);
   };
 
   return (
-    <Wrapper>
+    <NavWrapper>
       <ul onMouseLeave={() => setSelectedList([])}>
         {menus.map((menu: MenuObject, i) => {
           return (
@@ -38,7 +39,7 @@ const Sidebar: React.FC<Props> = ({ menus }) => {
           );
         })}
       </ul>
-    </Wrapper>
+    </NavWrapper>
   );
 };
 

@@ -1,5 +1,6 @@
 import React from "react";
-import { Wrapper, ButtonWrapper } from "./LoginCard.style";
+import { ButtonWrapper } from "./LoginCard.style";
+import { CardWrapper } from "../../../../GlobalStyle/GlobalStyle.style";
 
 type Props = {
   goBack: (e: React.MouseEvent<HTMLButtonElement>) => void;
@@ -15,7 +16,7 @@ const LoginCard: React.FC<Props> = ({
   inputPassword,
 }) => (
   <form>
-    <Wrapper>
+    <CardWrapper>
       <h2 className="title"> Log in</h2>
       <label className="label">user name</label>
       <input
@@ -39,7 +40,7 @@ const LoginCard: React.FC<Props> = ({
           Login
         </button>
       </ButtonWrapper>
-    </Wrapper>
+    </CardWrapper>
   </form>
 );
 
